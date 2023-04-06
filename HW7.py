@@ -1,7 +1,7 @@
 
-# Your name:
-# Your student id:
-# Your email:
+# Your name: Jenna Li
+# Your student id: 07402574
+# Your email: jennali@umich.edu
 # List who you have worked with on this project:
 
 import unittest
