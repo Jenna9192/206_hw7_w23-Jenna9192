@@ -102,7 +102,12 @@ def nationality_search(countries, cur, conn):
 
 
 def birthyear_nationality_search(age, country, cur, conn):
-    pass
+    r = '''SELECT name, nationality, birthyear 
+            FROM Players 
+            WHERE nationality = ? AND birthyear < ? '''
+    cur.execute(r, (country, 2023 - age))
+    results = cur.fetchall()
+    return results
 
 ## [TASK 4]: 15 points
 # finish the function position_birth_search
@@ -122,7 +127,16 @@ def birthyear_nationality_search(age, country, cur, conn):
     # HINT: You'll have to use JOIN for this task.
 
 def position_birth_search(position, age, cur, conn):
-       pass
+
+    r = '''SELECT Players.name, Positions.position, Players.birthyear
+            FROM Players JOIN Positions
+            ON Players.position_id = Positions.id 
+            WHERE Positions.position = ? AND Players.birthyear > ? '''
+    
+
+    cur.execute(r, (position, (2023 - age)))
+    result = cur.fetchall()
+    return result
 
 
 # [EXTRA CREDIT]
